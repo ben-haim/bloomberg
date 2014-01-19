@@ -18,8 +18,8 @@
     <!-- nav options -->
     <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Summary", "#" %></li>
-        <li><%= link_to "Preferences", "#" %></li>
+        <li><%= link_to "Summary", "/" %></li>
+        <li><%= link_to "Preferences", "/preference" %></li>
       </ul>
     </div>
   </div><!-- container -->
@@ -36,23 +36,59 @@
   <td style="width: 10em;"></td>
   <td style="width: 8em;"><strong>Symbol</strong></td>
   <td style="width: 8em;"><strong>Last Close</strong></td>
-  <td style="width: 8em;"><strong>52-week high</strong></td>
-  <td style="width: 8em;"><strong>52-week low</strong></td>
-  <td style="width: 8em;"><strong>Portfolio Weight</strong></td>
   <td style="width: 8em;"><strong>Book Value</strong></td>
   <td style="width: 8em;"><strong>Market Value</strong></td>
   <td style="width: 8em;"><strong>Return %</strong></td>
   <td style="width: 8em;"><strong>Return $</strong></td>
 </tr>
 <tr style="height: 3em;">
-  <td style="width: 10em;">Portfolio</td>
+  <td style="width: 10em;"></td>
 </tr>
-<% @portfolio.stocks.each do |stock| %>
 <tr style="height: 3em;">
-  <td style="width: 10em;"><%= stock.symbol %></td>
+  <td style="width: 10em;"></td>
+  <td style="width: 10em;">AAPL</td>
+  <td style="width: 10em;">540.67</td>
+  <td style="width: 10em;">$9536.2</td>
+  <td style="width: 10em;">$10812.8</td>
+  <td style="width: 10em;">13.39%</td>
+  <td style="width: 10em;">1276.6</td>
 </tr>
-<% end %>
-
+<tr style="height: 3em;">
+  <td style="width: 10em;"></td>
+  <td style="width: 10em;">AMZN</td>
+  <td style="width: 10em;">399.61</td>
+  <td style="width: 10em;">$7992.2</td>
+  <td style="width: 10em;">$8251.3</td>
+  <td style="width: 10em;">-3.14%</td>
+  <td style="width: 10em;">-259.1</td>
+</tr>
+<tr style="height: 3em;">
+  <td style="width: 10em;"></td>
+  <td style="width: 10em;">MSFT</td>
+  <td style="width: 10em;">36.38</td>
+  <td style="width: 10em;">$727.6</td>
+  <td style="width: 10em;">$921.7</td>
+  <td style="width: 10em;">26.68%</td>
+  <td style="width: 10em;">194.1</td>
+</tr>
+<tr style="height: 3em;">
+  <td style="width: 10em;"></td>
+  <td style="width: 10em;">GOOG</td>
+  <td style="width: 10em;">1150.53</td>
+  <td style="width: 10em;">$19644.2</td>
+  <td style="width: 10em;">$23010.6</td>
+  <td style="width: 10em;">14.60%</td>
+  <td style="width: 10em;">3366.4</td>
+</tr>
+<tr style="height: 3em;">
+  <td style="width: 10em;"></td>
+  <td style="width: 10em;">KO</td>
+  <td style="width: 10em;">39.28</td>
+  <td style="width: 10em;">$2066</td>
+  <td style="width: 10em;">$1964</td>
+  <td style="width: 10em;">-5.19%</td>
+  <td style="width: 10em;">-102</td>
+</tr>
 </table>
 
 <br />
@@ -155,4 +191,3 @@ $('#treynor_radio').click(function(){
 
   
 </script>
-

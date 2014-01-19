@@ -12,14 +12,14 @@
     <!-- top left logo --> 
     <!-- <a class="navbar-brand" href="index.html">Logo la</a> -->
     <ul class="nav navbar-nav">
-      <li><%= link_to "Portfolio Summary", "#" %></li>
+      <li><%= link_to "Portfolio Summary", "/" %></li>
     </ul>
 
     <!-- nav options -->
     <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Summary", "#" %></li>
-        <li><%= link_to "Preferences", "#" %></li>
+        <li><%= link_to "Summary", "/" %></li>
+        <li><%= link_to "Preferences", "/preference" %></li>
       </ul>
     </div>
   </div><!-- container -->
@@ -79,7 +79,7 @@
 	        },
 	        series: // data_for_pie
 	        [{name: 'Weight', 
-	        data: [{name:"a",y:0.5},{name:"b",y:0.5}] }] 
+	        data: [{name:"AAPL",y:0.24},{name:"AMZN",y:0.18}, {name:"MSFT",y:0.02}, {name:"GOOG",y:0.52}, {name:"KO",y:0.04}]  }] 
 	    });
 		$('#portfolio_return').highcharts({
 	        chart: {
@@ -87,7 +87,7 @@
                 spacingRight: 20
             },
             title: {
-                text: 'YTD Portfolio Return'
+                text: 'Portfolio Return'
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
@@ -103,7 +103,7 @@
             },
             yAxis: {
                 title: {
-                    text: '% Return'
+                    text: '% P/L'
                 }
             },
             tooltip: {
@@ -142,7 +142,7 @@
                 pointInterval: 24 * 3600 * 1000,
                 pointStart: Date.UTC(2013, 00, 17),
                 data: [
-                    0.8446, 0.8445, 0.8444, 0.8451, 1,1,1,1,1,2,2,2,1,1
+                    0.15, 0.1346, 0.163, 0.0952, 0.0821, 0.0598, -0.0322, 0.0276, -0.0516, 0.0138, 0.06134, 0.03516, -0.0513216, -0.0345, -0.10543, 0.01345, 0.013454, 0.0346, -0.03462, 0.0624
                 ]
             }]
         })
@@ -201,7 +201,7 @@
                 pointInterval: 24 * 3600 * 1000,
                 pointStart: Date.UTC(2013, 00, 17),
                 data: [
-                    0.8446, 0.8445, 0.8444, 0.8451, 1,1,1,1,1,2,2,2,1,1
+                    0.8446, 0.8445, 0.8444, 0.8451, 1,1,1,1,1,2,2,2,1,1, 1,1,1,1,1,1,1
                 ]
             }, {
                 name: 'Alert Threshold',
@@ -230,6 +230,7 @@
 	</div>
 </div>
 
+<!--
 <table>
 <tr style="height: 3em;">
   <td style="width: 10em;"></td>
@@ -249,6 +250,7 @@
   <td style="width: 10em;">Benchmark</td>
 </tr>
 </table>
+
 
 <br /><br /><br />
 <h2>Stats</h2>
@@ -332,3 +334,4 @@
 		<br /><br />
 	</div>
 </div>
+-->
