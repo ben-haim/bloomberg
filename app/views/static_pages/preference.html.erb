@@ -1,0 +1,158 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">     
+    <div class="navbar-header">
+      <!-- nav button icon for smaller resolutions (mobile) -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>          
+    </div>
+    <!-- top left logo --> 
+    <!-- <a class="navbar-brand" href="index.html">Logo la</a> -->
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Preferences", "#" %></li>
+    </ul>
+
+    <!-- nav options -->
+    <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Summary", "#" %></li>
+        <li><%= link_to "Preferences", "#" %></li>
+      </ul>
+    </div>
+  </div><!-- container -->
+</nav>
+
+<br /><br /><br /><br />
+
+<h2>Portfolio Holdings</h2>
+<hr>
+
+
+<table>
+<tr style="height: 3em;">
+  <td style="width: 10em;"></td>
+  <td style="width: 8em;"><strong>Symbol</strong></td>
+  <td style="width: 8em;"><strong>Last Close</strong></td>
+  <td style="width: 8em;"><strong>52-week high</strong></td>
+  <td style="width: 8em;"><strong>52-week low</strong></td>
+  <td style="width: 8em;"><strong>Portfolio Weight</strong></td>
+  <td style="width: 8em;"><strong>Book Value</strong></td>
+  <td style="width: 8em;"><strong>Market Value</strong></td>
+  <td style="width: 8em;"><strong>Return %</strong></td>
+  <td style="width: 8em;"><strong>Return $</strong></td>
+</tr>
+<tr style="height: 3em;">
+  <td style="width: 10em;">Portfolio</td>
+</tr>
+<% @portfolio.stocks.each do |stock| %>
+<tr style="height: 3em;">
+  <td style="width: 10em;"><%= stock.symbol %></td>
+</tr>
+<% end %>
+
+</table>
+
+<br />
+<h2>Metric Alert:</h2>
+<hr>
+<form action="">
+<div class="row">
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <input type="radio" name="group" id="sharpe_radio" value="sharpe">&nbsp;&nbsp;Sharpe Ratio:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="sharpe_pref"></input>
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="alpha_radio" value="alpha">&nbsp;&nbsp;Alpha:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="alph_pref"></input>      
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="beta_radio" value="beta">&nbsp;&nbsp;Beta:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="alph_pref"></input>      
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="capture_radio" value="capture">&nbsp;&nbsp;Capture Ratio:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="capture_pref"></input>
+    </div>
+    <br /><br />
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <input type="radio" name="group" id="treynor_radio" value="treynor">&nbsp;&nbsp;Treynor Ratio:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="treynor_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="corr_radio" value="corr">&nbsp;&nbsp;Correlation:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="corr_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="r_2_radio" value="r_2">&nbsp;&nbsp;R^2:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="r_2_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="var_radio" value="var">&nbsp;&nbsp;Value at Risk:
+    </div>
+    <div class="col-md-6">
+      <input style="widht: 100%;" id="var_pref"></input>
+    </div>
+    <br/><br />
+  </div>
+</div>
+</form>
+
+<div id="definition" class="well">
+  The Sharpe ratio measures the efficiency of a portfolio. It quantifies the return received in exchange for risk assumed
+</div>
+
+<script>
+$('#sharpe_radio').click(function() {
+  $('.well').html("<p>The Sharpe ratio measures the efficiency of a portfolio. It quantifies the return received in exchange for risk assumed</p>");
+});
+$('#beta_radio').click(function() {
+  $('.well').html("<p>Beta is a measure of sensitivity to the market benchmark. It measures the volatility of a security or portfolio relative to the market as a whole. 1.0 indicates that a portfolio would respond similarly to the market. Greater than 1.0 indicates that a more responsive portfolio, vice versa</p>");
+});
+$('#alpha_radio').click(function() {
+  $('.well').html("<p>Jensen’s alpha is the portfolio’s risk-adjusted performance or “value added”</p>");
+});
+$('#capture_radio').click(function() {
+  $('.well').html("<p>The upside (downside) capture ratio ratio measures, on an absolute basis, how much of a benchmark’s incline (decline) was captured by the portfolio</p>");
+});
+$('#corr_radio').click(function() {
+  $('.well').html("<p>The downside capture ratio measures, on an absolute basis, how much of a benchmark’s decline was captured by the portfolio. <1 means underperformed relative to benchmark, >1 means overperformed</p>");
+});
+$('#r_2_radio').click(function() {
+  $('.well').html("<p>R-squared, aka the coefficient of determination, represents the dependence of one variable (eg. portfolio’s return) on another variable (eg. benchmark return)</p>");
+});
+$('#var_radio').click(function() {
+  $('.well').html("<p>The Value at Risk is the maximum loss that can be expected within a specified holding period with a specified confidence level.  (default at 95%, assumed normal distribution)</p>");
+});
+$('#treynor_radio').click(function(){
+  $('.well').html("<p>Treynor ratio is a measurement of the returns earned in excess of what could have been earned on a risk free investment</p>");
+});
+
+  
+</script>
+

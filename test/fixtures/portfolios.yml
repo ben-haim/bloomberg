@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  user_id: 1
+  covariance: 1.5
+  alpha: 1.5
+  beta: 1.5
+  sharpe: 1.5
+  up_capture: 1.5
+  down_capture: 1.5
+  correlation_coeff: 1.5
+  r_squared: 1.5
+  treynor_ratio: 1.5
+
+two:
+  name: MyString
+  user_id: 1
+  covariance: 1.5
+  alpha: 1.5
+  beta: 1.5
+  sharpe: 1.5
+  up_capture: 1.5
+  down_capture: 1.5
+  correlation_coeff: 1.5
+  r_squared: 1.5
+  treynor_ratio: 1.5

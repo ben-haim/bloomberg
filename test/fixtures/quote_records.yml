@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  record_time: MyString
+  stock_id: 1
+  symbol: MyString
+  price: 1.5
+  stock_return: 1.5
+
+two:
+  record_time: MyString
+  stock_id: 1
+  symbol: MyString
+  price: 1.5
+  stock_return: 1.5

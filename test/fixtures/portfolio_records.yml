@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date_record: MyString
+  ret: 1.5
+  arith_mean: 1.5
+  geo_mean: 1.5
+  std_dev: 1.5
+  covar: 1.5
+  alpha: 1.5
+  beta: 1.5
+  sharpe: 1.5
+  up_capture: 1.5
+  down_capture: 1.5
+  corr_coeff: 1.5
+  r_squared: 1.5
+  treynor: 1.5
+
+two:
+  date_record: MyString
+  ret: 1.5
+  arith_mean: 1.5
+  geo_mean: 1.5
+  std_dev: 1.5
+  covar: 1.5
+  alpha: 1.5
+  beta: 1.5
+  sharpe: 1.5
+  up_capture: 1.5
+  down_capture: 1.5
+  corr_coeff: 1.5
+  r_squared: 1.5
+  treynor: 1.5
