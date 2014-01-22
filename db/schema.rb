@@ -11,15 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119135021) do
+ActiveRecord::Schema.define(:version => 20140121154658) do
 
   create_table "holdings", :force => true do |t|
     t.integer  "portfolio_id"
     t.integer  "stock_id"
-    t.integer  "num_stocks"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "buy_date"
+    t.string   "sell_date"
+    t.float    "buy_price"
+    t.float    "sell_price"
+    t.integer  "num_shares"
+    t.boolean  "holding"
+    t.string   "as_of_date"
   end
+
+  add_index "holdings", ["as_of_date"], :name => "index_holdings_on_as_of_date"
 
   create_table "portfolio_records", :force => true do |t|
     t.integer  "portfolio_id"
@@ -39,22 +47,19 @@ ActiveRecord::Schema.define(:version => 20140119135021) do
     t.float    "treynor"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.float    "cash"
+    t.string   "month"
+    t.string   "year"
   end
+
+  add_index "portfolio_records", ["month"], :name => "index_portfolio_records_on_month"
+  add_index "portfolio_records", ["year"], :name => "index_portfolio_records_on_year"
 
   create_table "portfolios", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.float    "covariance"
-    t.float    "alpha"
-    t.float    "beta"
-    t.float    "sharpe"
-    t.float    "up_capture"
-    t.float    "down_capture"
-    t.float    "correlation_coeff"
-    t.float    "r_squared"
-    t.float    "treynor_ratio"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.float    "sharpe_pref"
     t.float    "alpha_pref"
     t.float    "beta_pref"
@@ -62,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20140119135021) do
     t.float    "corr_pref"
     t.float    "r_2_pref"
     t.float    "var_pref"
+    t.float    "treynor_pref"
+    t.float    "start_cash"
   end
 
   create_table "quote_records", :force => true do |t|
@@ -76,8 +83,28 @@ ActiveRecord::Schema.define(:version => 20140119135021) do
 
   create_table "stocks", :force => true do |t|
     t.string   "symbol"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.float    "curr_price"
+    t.string   "date_updated"
   end
+
+  add_index "stocks", ["symbol"], :name => "index_stocks_on_symbol"
+
+  create_table "transactions", :force => true do |t|
+    t.string   "buy_sell"
+    t.integer  "portfolio_id"
+    t.integer  "stock_id"
+    t.integer  "num_shares"
+    t.float    "price"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "trans_date"
+    t.string   "month"
+    t.string   "year"
+  end
+
+  add_index "transactions", ["month"], :name => "index_transactions_on_month"
+  add_index "transactions", ["year"], :name => "index_transactions_on_year"
 
 end
