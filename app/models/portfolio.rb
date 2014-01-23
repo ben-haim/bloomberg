@@ -8,6 +8,8 @@ class Portfolio < ActiveRecord::Base
 
 	has_many :transactions
 
+	belongs_to :user
+
 	def update_metrics
 		self.covariance
 		self.alpha
@@ -156,7 +158,9 @@ class Portfolio < ActiveRecord::Base
 	'''
 
 	#PEI'S VERSION OF THIS 
-	
+
+
+
 	def get_returns_from(date1, date2, smp500)
 		#for now, assume smp500 has the size of the number of days between date1 and date2 (including endpoints)
 		current_holdings = holdings_on(date2)
@@ -167,9 +171,9 @@ class Portfolio < ActiveRecord::Base
 
 		portfolio_values =Array.new
 
-		for i in 0..(transactions.length-2)
-			for j in 
-		end
+		#for i in 0..(transactions.length-2)
+		#	for j in 
+		#end
 	end
 
 	# Buy the stock with symbol at the last close price of the date
@@ -241,7 +245,7 @@ class Portfolio < ActiveRecord::Base
 			updated_holdings[holding.stock_id] += holding.num_shares
 		end
 
-		updated_holdings		# a 
+		updated_holdings
 	end
 
 	# AFTER inserting all the buy/sell transactions to database, used to back-calculate the market values on previous days.  
@@ -420,5 +424,10 @@ class Portfolio < ActiveRecord::Base
 
 	def market_values
 		
+	end
+
+	# Send the alert/notification email to the user
+	def alert(user)
+		Notifier.send_alert_email(user).deliver
 	end
 end

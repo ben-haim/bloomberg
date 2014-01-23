@@ -1,4 +1,16 @@
 Bloomberg::Application.routes.draw do
+  devise_for :users
+
+  resources :portfolios do
+    collection do 
+      get 'preference'
+      post 'make_transaction'
+      post 'send_alert'
+      post 'set_prefs'
+    end
+  end
+  resources :users
+
   root to: "static_pages#home"
 
   match 'charts', to: 'static_pages#charts'

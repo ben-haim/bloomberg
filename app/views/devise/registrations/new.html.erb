@@ -1,0 +1,36 @@
+<h2 class="text-center">Sign up</h2>
+
+<div class="row">
+	<div class="col-md-6 text-right col-md-pull-1">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
+
+			<div class="row">
+			  <%= f.text_field :first_name, { placeholder: "First Name"} %>
+			  <%= f.text_field :last_name, { placeholder: "Last Name"} %>
+      </div>
+			<div class="row">
+			  <%= f.email_field :email, {:autofocus => true, placeholder: "Email"} %>
+      </div>
+			<div class="row">
+			  <%= f.password_field :password, placeholder: "Password" %>
+      </div>
+			<div class="row">
+  			<%= f.password_field :password_confirmation, placeholder: "Re-enter Password" %>
+      </div>
+      <br />
+			<div class="row">
+        <%= f.submit "Sign up", class: "btn btn-default text-center" %>
+      </div>
+		<% end %>
+	</div>
+	<div class="col-md-6 text-left col-md-push-1">
+		Already have an account?
+		<%= link_to "Sign in", new_user_session_path %><br /><br />
+
+		Or 
+		<fb:login-button scope="email, user_photos, read_friendlists" onlogin="sign_in" registration-url="/sign_up">Sign in with Facebook</fb:login-button>
+	</div>
+</div>
+
+<div id="fb-root"></div>

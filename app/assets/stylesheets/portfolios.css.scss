@@ -1,0 +1,30 @@
+// Place all the styles related to the Portfolios controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+input.portfolio-transaction {
+	padding-left: 0.5em;
+	line-height: 2em;
+	height: 2em;
+
+	border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+
+select.portfolio-transaction {
+	line-height: 1.8em;
+	height: 1.8em;
+
+	border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+
+.portfolio-cell {
+	width: 10em;
+}
+
+.portfolio-holding-row {
+	height: 3em;
+}

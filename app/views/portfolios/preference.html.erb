@@ -1,0 +1,332 @@
+<h2>Portfolio Holdings</h2>
+<% date = "2014-01-22" %>
+<h4>As of <%= date %></h4>
+<hr>
+
+<div id="portfolio_id" class="hidden"><%= @portfolio.id %></div>
+
+<table>
+<tr style="height: 3em;">
+  <td class="portfolio-cell"></td>
+  <td style="width: 8em;"><strong>Symbol</strong></td>
+  <td style="width: 8em;"><strong>Last Close</strong></td>
+  <td style="width: 8em;"><strong>Book Value</strong></td>
+  <td style="width: 8em;"><strong>Market Value</strong></td>
+  <td style="width: 8em;"><strong>Return %</strong></td>
+  <td style="width: 8em;"><strong>Return $</strong></td>
+</tr>
+
+<% holdings = @portfolio.holdings_on(date) %>
+<% holdings.each do |holding| %>
+<% stock = holding.stock %>
+<div class="portfolio-holdings">
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell"><%= stock.symbol %></td>
+  <td class="portfolio-cell"><%= stock.get_price_on(date) %></td>
+  <td class="portfolio-cell">TODO Book Value</td>
+  <td class="portfolio-cell">$ <%= holding.market_value %></td>
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell">1276.6</td>
+</tr>
+<% end %>
+</div>
+<!-- 
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell"><</td>
+  <td class="portfolio-cell">540.67</td>
+  <td class="portfolio-cell">$9536.2</td>
+  <td class="portfolio-cell">$10812.8</td>
+  <td class="portfolio-cell">13.39%</td>
+  <td class="portfolio-cell">1276.6</td>
+</tr>
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell">AMZN</td>
+  <td class="portfolio-cell">399.61</td>
+  <td class="portfolio-cell">$7992.2</td>
+  <td class="portfolio-cell">$8251.3</td>
+  <td class="portfolio-cell">-3.14%</td>
+  <td class="portfolio-cell">-259.1</td>
+</tr>
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell">MSFT</td>
+  <td class="portfolio-cell">36.38</td>
+  <td class="portfolio-cell">$727.6</td>
+  <td class="portfolio-cell">$921.7</td>
+  <td class="portfolio-cell">26.68%</td>
+  <td class="portfolio-cell">194.1</td>
+</tr>
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell">GOOG</td>
+  <td class="portfolio-cell">1150.53</td>
+  <td class="portfolio-cell">$19644.2</td>
+  <td class="portfolio-cell">$23010.6</td>
+  <td class="portfolio-cell">14.60%</td>
+  <td class="portfolio-cell">3366.4</td>
+</tr>
+<tr class="portfolio-holding-row">
+  <td class="portfolio-cell"></td>
+  <td class="portfolio-cell">KO</td>
+  <td class="portfolio-cell">39.28</td>
+  <td class="portfolio-cell">$2066</td>
+  <td class="portfolio-cell">$1964</td>
+  <td class="portfolio-cell">-5.19%</td>
+  <td class="portfolio-cell">-102</td>
+</tr>
+-->
+</table>
+
+<hr>
+ 
+<h4>Transactions</h4>
+<p>Make changes to your portfolio by buying or selling stocks: </p>
+<div class="make-transaction">
+  <select class="portfolio-transaction" id="buy_sell">
+    <option value="buy">Buy</option>
+    <option value="sell">Sell</option>
+  </select>
+  <input class="portfolio-transaction" id="stock_symbol" placeholder="Symbol"></input>
+  <input class="portfolio-transaction" id="stock_num_shares" placeholder="Number of Shares"></input>
+
+  on: 
+  <select class="portfolio-transaction" id="date_year"><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option></select>
+  <select class="portfolio-transaction" id="date_month"><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>
+  <select class="portfolio-transaction" id="date_day">
+     <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option>
+    <option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</optclass="portfolio-transaction"ion><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+  </select>
+  &nbsp;&nbsp;&nbsp;
+  <div id="update_portfolio" class="btn btn-primary">Update Portfolio</div>
+</div>
+
+<hr>
+
+<h4>Testing Notifications</h4>
+<p>Click the button below to send a notification to the user.</p>
+<br />
+<div id="notif_button" class="btn btn-default">Send Text and Email</div>
+
+<hr>
+
+<br />
+<h2>Metric Alert:</h2> <div id="settings_saved" class="col-md-4 well hidden">Preferences SAved</div>
+<hr>
+<form id="radio_group_form" action="">
+<div class="row">
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <input type="radio" name="group" id="sharpe_radio" value="sharpe" checked="true">&nbsp;&nbsp;Sharpe Ratio:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="sharpe_pref"></input>
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="alpha_radio" value="alpha">&nbsp;&nbsp;Alpha:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="alpha_pref"></input>      
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="beta_radio" value="beta">&nbsp;&nbsp;Beta:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="beta_pref"></input>      
+    </div>
+    <br /><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="capture_radio" value="capture">&nbsp;&nbsp;Capture Ratio:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="capture_pref"></input>
+    </div>
+    <br /><br />
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <input type="radio" name="group" id="treynor_radio" value="treynor">&nbsp;&nbsp;Treynor Ratio:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="treynor_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="corr_radio" value="corr">&nbsp;&nbsp;Correlation:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="corr_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="r_2_radio" value="r_2">&nbsp;&nbsp;R^2:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="r_2_pref"></input>
+    </div>
+    <br/><br />
+    <div class="col-md-6">
+      <input type="radio" name="group" id="var_radio" value="var">&nbsp;&nbsp;Value at Risk:
+    </div>
+    <div class="col-md-6">
+      <input class="portfolio-transaction" style="width: 100%;" id="var_pref"></input>
+    </div>
+    <br/><br />
+  </div>
+</div>
+<br />
+<div id="metrics_save" class="btn btn-primary">Save Metrics Settings</div>
+</form>
+
+<br />
+<div id="definition" class="well">
+  The Sharpe ratio measures the efficiency of a portfolio. It quantifies the return received in exchange for risk assumed
+</div>
+
+<script>
+$('#sharpe_radio').click(function() {
+  $('.well').html("<p>The Sharpe ratio measures the efficiency of a portfolio. It quantifies the return received in exchange for risk assumed</p>");
+});
+$('#beta_radio').click(function() {
+  $('.well').html("<p>Beta is a measure of sensitivity to the market benchmark. It measures the volatility of a security or portfolio relative to the market as a whole. 1.0 indicates that a portfolio would respond similarly to the market. Greater than 1.0 indicates that a more responsive portfolio, vice versa</p>");
+});
+$('#alpha_radio').click(function() {
+  $('.well').html("<p>Jensen’s alpha is the portfolio’s risk-adjusted performance or “value added”</p>");
+});
+$('#capture_radio').click(function() {
+  $('.well').html("<p>The upside (downside) capture ratio ratio measures, on an absolute basis, how much of a benchmark’s incline (decline) was captured by the portfolio</p>");
+});
+$('#corr_radio').click(function() {
+  $('.well').html("<p>The downside capture ratio measures, on an absolute basis, how much of a benchmark’s decline was captured by the portfolio. <1 means underperformed relative to benchmark, >1 means overperformed</p>");
+});
+$('#r_2_radio').click(function() {
+  $('.well').html("<p>R-squared, aka the coefficient of determination, represents the dependence of one variable (eg. portfolio’s return) on another variable (eg. benchmark return)</p>");
+});
+$('#var_radio').click(function() {
+  $('.well').html("<p>The Value at Risk is the maximum loss that can be expected within a specified holding period with a specified confidence level.  (default at 95%, assumed normal distribution)</p>");
+});
+$('#treynor_radio').click(function(){
+  $('.well').html("<p>Treynor ratio is a measurement of the returns earned in excess of what could have been earned on a risk free investment</p>");
+});
+
+
+$('#update_portfolio').click(function(){
+  var buy_sell = $('#buy_sell').val();
+  var symbol = $('#stock_symbol').val();
+  var num_shares = $('#stock_num_shares').val();
+  var date_year = $('#date_year').val();
+  var date_month = $('#date_month').val();
+  var date_day = $('#date_day').val();
+
+  var data = {
+    'buy_sell': buy_sell,
+    'symbol': symbol,
+    'num_shares': num_shares,
+    'date_year': date_year,
+    'date_month': date_month,
+    'date_day': date_day    
+  };
+
+  $.ajax({
+    url: '/portfolios/make_transaction',
+    type: 'post',
+    dataType: 'json',
+    data: data,
+    success: function(data) {
+      console.log(data);
+      $('#buy_sell').val('buy');
+      $('#stock_symbol').val('');
+      $('#stock_num_shares').val('');
+      $('#date_year').val('2012');
+      $('#date_month').val('01');
+      $('#date_day').val('01');
+
+      // TODO customize this for the stocks.
+      var new_holding = '<tr class="portfolio-holding-row"><td class="portfolio-cell"></td><td class="portfolio-cell">' + symbol + '</td><td class="portfolio-cell">' + 'TODO price' + '</td><td class="portfolio-cell">' + 'TODO book value' + '</td><td class="portfolio-cell">$ ' + 'TODO market value' + '</td><td class="portfolio-cell">' + 'TODO return %' + '</td><td class="portfolio-cell">' + 'return $' + '</td></tr>';
+      $('.portfolio-holdings').append(new_holding);
+    }
+  })
+});
+  
+$('#notif_button').click(function(){
+  $.ajax({
+    url: '/portfolios/send_alert',
+    type: 'post',
+    dataType: 'json',
+    data: {
+      'user_id': '<%= current_user.id %>'
+    },
+    success: function(data) {
+      console.log(data);
+    }
+  });
+});
+
+// Set the current metric to be displayed for the portfolio 
+$('#metrics_save').click(function(){
+  var portfolio_id = $('#portfolio_id').html();
+  var curr_metric = $('input[name=group]:checked', '#radio_group_form').val();
+  console.log('portfolio_id: ' + portfolio_id);
+  console.log('curr_metric: ' + curr_metric);
+
+  var sharpe_pref = $('#sharpe_pref').val();
+  var alpha_pref = $('#alpha_pref').val();
+  var beta_pref = $('#beta_pref').val();
+  var capture_pref = $('#capture_pref').val();
+  var treynor_pref = $('#treynor_pref').val();
+  var corr_pref = $('#corr_pref').val();
+  var r_2_pref = $('#r_2_pref').val();
+  var var_pref = $('#var_pref').val();
+
+  var data = {
+    'portfolio_id': portfolio_id,
+    'curr_metric': curr_metric,
+    'sharpe_pref': sharpe_pref,
+    'alpha_pref': alpha_pref,
+    'beta_pref': beta_pref,
+    'capture_pref': capture_pref,
+    'treynor_pref': treynor_pref,
+    'corr_pref': corr_pref,
+    'r_2_pref': r_2_pref,
+    'var_pref': var_pref
+  }
+
+  $.ajax({
+    url: '/portfolios/set_prefs',
+    type: 'post',
+    dataType: 'post',
+    data: data,
+    success: function(data) {
+      console.log(data);
+      $('#settings_saved').toggleClass('hidden');
+    
+      // Clear the form
+      $('#sharpe_pref').val('');
+      $('#alpha_pref').val('');
+      $('#beta_pref').val('');
+      $('#capture_pref').val('');
+      $('#treynor_pref').val('');
+      $('#corr_pref').val('');
+      $('#r_2_pref').val('');
+      $('#var_pref').val('');
+    }
+  })
+});
+
+// Set the original values of the preferences
+(function initialize_prefs() {
+  $('#sharpe_pref').val(gon.portfolio.sharpe_pref);
+  $('#alpha_pref').val(gon.portfolio.alpha_pref);
+  $('#beta_pref').val(gon.portfolio.beta_pref);
+  $('#capture_pref').val(gon.portfolio.capture_pref);
+  $('#treynor_pref').val(gon.portfolio.treynor_pref);
+  $('#corr_pref').val(gon.portfolio.corr_pref);
+  $('#r_2_pref').val(gon.portfolio.r_2_pref);
+  $('#var_pref').val(gon.portfolio.var_pref);
+})();
+
+</script>

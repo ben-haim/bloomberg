@@ -1,0 +1,36 @@
+<h2>Start Protecting Your Investment Now</h2>
+<h3>Sign Up Below</h3>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+
+  </table>
+    <tr><td><%= f.text_field :first_name, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 10.5em; margin-bottom: 0.5em;', placeholder: 'First Name'} %></td>
+
+    <td><%= f.text_field :last_name, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 10.5em; margin-bottom: 0.5em;', placeholder: 'Last Name'} %></td></tr><br />
+
+    <tr><td><%= f.text_field :email, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 21.35em; margin-bottom: 0.5em;',placeholder: 'Email'} %></td></tr><br />
+
+    <tr><td><%= f.password_field :password, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 21.35em; margin-bottom: 0.5em;',placeholder: 'Phone Number'} %></td></tr><br />
+
+    <tr><td><%= f.password_field :password, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 21.35em; margin-bottom: 0.5em;',placeholder: 'Password'} %></td></tr><br />
+
+
+    <tr><td><%= f.password_field :password_confirmation, {style: 'border-radius: 0.3em; -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; padding-left: 0.5em; width: 21.35em;',placeholder: 'Password Confirmation'} %></td></tr><br /><br />
+
+  <div class="actions">
+    <%= f.submit 'Create Account', class: 'btn btn-primary btn-large' %>
+  </div>
+<% end %>
